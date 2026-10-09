@@ -1,0 +1,8 @@
+build/
+*.o
+*.d
+*.kev
+*.csv
+*.out
+.metadata/
+.settings/

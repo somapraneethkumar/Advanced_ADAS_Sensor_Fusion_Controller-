@@ -1,0 +1,298 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080"><defs><marker id="m0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F5FA8"/></marker><marker id="m1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1C2430"/></marker><marker id="m2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1E7A3E"/></marker><marker id="m3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D7322B"/></marker><marker id="m4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4F5966"/></marker></defs>
+<rect x="0" y="0" width="1920" height="1080" rx="0" fill="#FFFFFF"/>
+<rect x="650" y="12" width="620" height="86" rx="10" fill="#173A63"/>
+<text x="960" y="50" font-family="Inter" font-size="32" font-weight="800" fill="#fff" text-anchor="middle">FusionDrive ADAS</text>
+<text x="960" y="82" font-family="Inter" font-size="18" font-weight="600" fill="#CFE0F5" text-anchor="middle">System Architecture · QNX SDP 8.0 · Raspberry Pi 4</text>
+<text x="1890" y="40" font-family="Inter" font-size="14" font-weight="600" fill="#4F5966" text-anchor="end">Team ID: QNXHACK-HYD-TEAM-026</text>
+<text x="1890" y="60" font-family="Inter" font-size="14" font-weight="700" fill="#D7322B" text-anchor="end">QNX India Hackathon</text>
+<text x="1890" y="80" font-family="Inter" font-size="13" font-weight="500" fill="#4F5966" text-anchor="end">Sakilam Adithya · Dubbaka Manoj Goud</text>
+<text x="1890" y="97" font-family="Inter" font-size="13" font-weight="500" fill="#4F5966" text-anchor="end">Soma Praneeth Kumar</text>
+<rect x="18" y="108" width="734" height="692" rx="14" fill="#EAF3FC" stroke="#8DB8E6" stroke-width="2"/>
+<rect x="125.0" y="118" width="520" height="42" rx="21.0" fill="#1F5FA8"/>
+<text x="385.0" y="147.0" font-family="Inter" font-size="22" font-weight="700" fill="#fff" text-anchor="middle">Sensor Nodes<tspan font-size="15.84" font-weight="600"> (3 QNX processes)</tspan></text>
+<rect x="36" y="176" width="372" height="112" rx="10" fill="#FFFFFF" stroke="#8DB8E6" stroke-width="1.6"/>
+<text x="114" y="202" font-family="Inter" font-size="16" font-weight="700" fill="#1C2430" text-anchor="start">1. IMU · MPU6050</text>
+<circle cx="122" cy="219" r="2.6" fill="#1C2430"/>
+<text x="132" y="224" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">I2C1 /dev/i2c1 · 400 kHz</text>
+<circle cx="122" cy="238" r="2.6" fill="#1C2430"/>
+<text x="132" y="243" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">hardware FIFO 200 Hz, read every 20 ms</text>
+<circle cx="122" cy="257" r="2.6" fill="#1C2430"/>
+<text x="132" y="262" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">accel · gyro · roll / pitch · temperature</text>
+<rect x="58" y="214.0" width="36" height="36" rx="5" fill="#1F5FA8"/>
+<line x1="64" y1="207.0" x2="64" y2="214.0" stroke="#1F5FA8" stroke-width="3"/>
+<line x1="64" y1="250.0" x2="64" y2="257.0" stroke="#1F5FA8" stroke-width="3"/>
+<line x1="51" y1="220.0" x2="58" y2="220.0" stroke="#1F5FA8" stroke-width="3"/>
+<line x1="94" y1="220.0" x2="101" y2="220.0" stroke="#1F5FA8" stroke-width="3"/>
+<line x1="72" y1="207.0" x2="72" y2="214.0" stroke="#1F5FA8" stroke-width="3"/>
+<line x1="72" y1="250.0" x2="72" y2="257.0" stroke="#1F5FA8" stroke-width="3"/>
+<line x1="51" y1="228.0" x2="58" y2="228.0" stroke="#1F5FA8" stroke-width="3"/>
+<line x1="94" y1="228.0" x2="101" y2="228.0" stroke="#1F5FA8" stroke-width="3"/>
+<line x1="80" y1="207.0" x2="80" y2="214.0" stroke="#1F5FA8" stroke-width="3"/>
+<line x1="80" y1="250.0" x2="80" y2="257.0" stroke="#1F5FA8" stroke-width="3"/>
+<line x1="51" y1="236.0" x2="58" y2="236.0" stroke="#1F5FA8" stroke-width="3"/>
+<line x1="94" y1="236.0" x2="101" y2="236.0" stroke="#1F5FA8" stroke-width="3"/>
+<line x1="88" y1="207.0" x2="88" y2="214.0" stroke="#1F5FA8" stroke-width="3"/>
+<line x1="88" y1="250.0" x2="88" y2="257.0" stroke="#1F5FA8" stroke-width="3"/>
+<line x1="51" y1="244.0" x2="58" y2="244.0" stroke="#1F5FA8" stroke-width="3"/>
+<line x1="94" y1="244.0" x2="101" y2="244.0" stroke="#1F5FA8" stroke-width="3"/>
+<path d="M68,240.0 L68,223.0 M68,240.0 L85,240.0 M68,240.0 L81,229.0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+<rect x="36" y="302" width="372" height="112" rx="10" fill="#FFFFFF" stroke="#8DB8E6" stroke-width="1.6"/>
+<text x="114" y="328" font-family="Inter" font-size="16" font-weight="700" fill="#1C2430" text-anchor="start">2. Ultrasonic · HC-SR04</text>
+<circle cx="122" cy="345" r="2.6" fill="#1C2430"/>
+<text x="132" y="350" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">GPIO23 trig · GPIO24 echo (divider)</text>
+<circle cx="122" cy="364" r="2.6" fill="#1C2430"/>
+<text x="132" y="369" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">echo edges → GPIO IRQ 145 → pulse</text>
+<circle cx="122" cy="383" r="2.6" fill="#1C2430"/>
+<text x="132" y="388" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">distance + closing speed · 15 Hz</text>
+<rect x="50" y="346.0" width="40" height="24" rx="4" fill="#1F5FA8"/>
+<circle cx="60" cy="358.0" r="8" fill="#fff"/><circle cx="60" cy="358.0" r="4" fill="#1F5FA8"/>
+<circle cx="80" cy="358.0" r="8" fill="#fff"/><circle cx="80" cy="358.0" r="4" fill="#1F5FA8"/>
+<path d="M94,350.0 Q100.0,358.0 94,366.0" stroke="#1F5FA8" stroke-width="2.4" fill="none" opacity="1.0" transform="translate(5.0,0)"/>
+<path d="M94,344.4 Q104.2,358.0 94,371.6" stroke="#1F5FA8" stroke-width="2.4" fill="none" opacity="0.75" transform="translate(8.5,0)"/>
+<path d="M94,338.8 Q108.4,358.0 94,377.2" stroke="#1F5FA8" stroke-width="2.4" fill="none" opacity="0.5" transform="translate(12.0,0)"/>
+<rect x="36" y="428" width="372" height="112" rx="10" fill="#FFFFFF" stroke="#8DB8E6" stroke-width="1.6"/>
+<text x="114" y="454" font-family="Inter" font-size="16" font-weight="700" fill="#1C2430" text-anchor="start">3. USB Camera · C920</text>
+<circle cx="122" cy="471" r="2.6" fill="#1C2430"/>
+<text x="132" y="476" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">QNX Sensor Framework · libcamapi</text>
+<circle cx="122" cy="490" r="2.6" fill="#1C2430"/>
+<text x="132" y="495" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">640×480 @ 30 fps, colour target</text>
+<circle cx="122" cy="509" r="2.6" fill="#1C2430"/>
+<text x="132" y="514" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">target size · TTC from image growth</text>
+<rect x="50" y="468.0" width="52" height="28" rx="12" fill="#1F5FA8"/>
+<circle cx="76" cy="482.0" r="10" fill="#fff"/><circle cx="76" cy="482.0" r="5.5" fill="#1C2430"/>
+<rect x="72" y="496.0" width="8" height="8" fill="#1F5FA8"/><rect x="62" y="503.0" width="28" height="5" rx="2" fill="#1F5FA8"/>
+<rect x="36" y="556" width="372" height="112" rx="10" fill="#FFFFFF" stroke="#C2A9E6" stroke-width="1.6"/>
+<text x="114" y="582" font-family="Inter" font-size="16" font-weight="700" fill="#1C2430" text-anchor="start">4. Sensor-side Safety</text>
+<circle cx="122" cy="599" r="2.6" fill="#1C2430"/>
+<text x="132" y="604" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">FIFO-overflow, frozen, saturation checks</text>
+<circle cx="122" cy="618" r="2.6" fill="#1C2430"/>
+<text x="132" y="623" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">outlier gate · 2-echo confirmation</text>
+<circle cx="122" cy="637" r="2.6" fill="#1C2430"/>
+<text x="132" y="642" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">I2C errors → FAULT → auto re-init</text>
+<path d="M76,588.0 L96,596.0 L96,614.0 Q96,630.0 76,638.0 Q56,630.0 56,614.0 L56,596.0 Z" fill="#7A4FB0"/>
+<path d="M67,613.0 L74,620.0 L86,606.0" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+<rect x="36" y="682" width="372" height="104" rx="10" fill="#FFFFFF" stroke="#8DB8E6" stroke-width="1.6"/>
+<text x="114" y="708" font-family="Inter" font-size="16" font-weight="700" fill="#1C2430" text-anchor="start">5. Real-time Setup</text>
+<circle cx="122" cy="725" r="2.6" fill="#1C2430"/>
+<text x="132" y="730" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">SCHED_FIFO 28 / 29 · timer → pulse loops</text>
+<circle cx="122" cy="744" r="2.6" fill="#1C2430"/>
+<text x="132" y="749" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">one process per device (isolation)</text>
+<circle cx="76" cy="734.0" r="23" fill="#1F5FA8"/>
+<path d="M79,719.0 L67,737.0 L76,737.0 L73,750.0 L85,731.0 L76,731.0 Z" fill="#fff"/>
+<rect x="430" y="176" width="304" height="112" rx="10" fill="#FFFFFF" stroke="#8DB8E6" stroke-width="1.6"/>
+<text x="508" y="202" font-family="Inter" font-size="16" font-weight="700" fill="#1C2430" text-anchor="start">Timestamp &amp; Self-check</text>
+<circle cx="516" cy="219" r="2.6" fill="#1C2430"/>
+<text x="526" y="224" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">timestamp on every sample</text>
+<circle cx="516" cy="238" r="2.6" fill="#1C2430"/>
+<text x="526" y="243" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">IMU clock-drift correction</text>
+<circle cx="516" cy="257" r="2.6" fill="#1C2430"/>
+<text x="526" y="262" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">health: OK / DEGRADED / FAULT</text>
+<circle cx="470" cy="232.0" r="21" fill="#fff" stroke="#1F5FA8" stroke-width="4"/>
+<path d="M470,220.0 L470,232.0 L480,238.0" stroke="#1F5FA8" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+<rect x="465" y="202.0" width="10" height="6" rx="2" fill="#1F5FA8"/>
+<polyline points="408,232 426,232" fill="none" stroke="#1F5FA8" stroke-width="2.2" marker-end="url(#m0)"/>
+<polyline points="408,358 418,358 418,250 426,250" fill="none" stroke="#1F5FA8" stroke-width="2.2" marker-end="url(#m0)"/>
+<polyline points="408,484 422,484 422,268 426,268" fill="none" stroke="#1F5FA8" stroke-width="2.2" marker-end="url(#m0)"/>
+<polyline points="582,288 582,302" fill="none" stroke="#1C2430" stroke-width="2.2" marker-end="url(#m1)"/>
+<polygon points="582,304 692,352 582,400 472,352" fill="#FFF6D6" stroke="#E09A00" stroke-width="2"/>
+<text x="582" y="348" font-family="Inter" font-size="14" font-weight="700" fill="#1C2430" text-anchor="middle">Sensor</text>
+<text x="582" y="366" font-family="Inter" font-size="14" font-weight="700" fill="#1C2430" text-anchor="middle">healthy?</text>
+<rect x="500" y="438" width="234" height="82" rx="10" fill="#FFFFFF" stroke="#8DB8E6" stroke-width="1.6"/>
+<text x="516" y="466" font-family="Inter" font-size="16" font-weight="700" fill="#1C2430" text-anchor="start">Send record (IOV)</text>
+<text x="516" y="488" font-family="Inter" font-size="13.5" font-weight="400" fill="#4F5966" text-anchor="start">MsgSendv: header + samples</text>
+<text x="516" y="507" font-family="Inter" font-size="13.5" font-weight="400" fill="#4F5966" text-anchor="start">IMU ×4 · range ×1 · camera ×1</text>
+<polyline points="582,400 582,434" fill="none" stroke="#1E7A3E" stroke-width="2.2" marker-end="url(#m2)"/>
+<text x="592" y="422" font-family="Inter" font-size="16" font-weight="800" fill="#1E7A3E" text-anchor="start">Yes</text>
+<rect x="430" y="560" width="304" height="82" rx="10" fill="#FDE8E7" stroke="#F0A19C" stroke-width="1.6"/>
+<text x="446" y="588" font-family="Inter" font-size="16" font-weight="700" fill="#1C2430" text-anchor="start">Health pulse</text>
+<text x="446" y="610" font-family="Inter" font-size="13" font-weight="400" fill="#4F5966" text-anchor="start">MsgSendPulse: DEGRADED · FAULT</text>
+<text x="446" y="629" font-family="Inter" font-size="13" font-weight="400" fill="#4F5966" text-anchor="start">NO TARGET · non-blocking</text>
+<polyline points="472,352 446,352 446,556" fill="none" stroke="#D7322B" stroke-width="2.2" marker-end="url(#m3)"/>
+<text x="452" y="374" font-family="Inter" font-size="16" font-weight="800" fill="#D7322B" text-anchor="start">No</text>
+<rect x="430" y="682" width="304" height="104" rx="10" fill="#FFFFFF" stroke="#8DB8E6" stroke-width="1.6"/>
+<text x="446" y="708" font-family="Inter" font-size="16" font-weight="700" fill="#1C2430" text-anchor="start">Message header</text>
+<circle cx="454" cy="725" r="2.6" fill="#1C2430"/>
+<text x="464" y="730" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">type · sensor · count · seq number</text>
+<circle cx="454" cy="744" r="2.6" fill="#1C2430"/>
+<text x="464" y="749" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">health · send time · rate</text>
+<circle cx="454" cy="763" r="2.6" fill="#1C2430"/>
+<text x="464" y="768" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">seq gaps → lost-message count</text>
+<rect x="782" y="300" width="352" height="150" rx="40" fill="#173A63"/>
+<circle cx="832" cy="375" r="9" fill="#fff"/>
+<line x1="832" y1="375" x2="856.0" y2="375.0" stroke="#fff" stroke-width="2.5"/><circle cx="856.0" cy="375.0" r="5" fill="#fff"/>
+<line x1="832" y1="375" x2="844.0" y2="395.8" stroke="#fff" stroke-width="2.5"/><circle cx="844.0" cy="395.8" r="5" fill="#fff"/>
+<line x1="832" y1="375" x2="820.0" y2="395.8" stroke="#fff" stroke-width="2.5"/><circle cx="820.0" cy="395.8" r="5" fill="#fff"/>
+<line x1="832" y1="375" x2="808.0" y2="375.0" stroke="#fff" stroke-width="2.5"/><circle cx="808.0" cy="375.0" r="5" fill="#fff"/>
+<line x1="832" y1="375" x2="820.0" y2="354.2" stroke="#fff" stroke-width="2.5"/><circle cx="820.0" cy="354.2" r="5" fill="#fff"/>
+<line x1="832" y1="375" x2="844.0" y2="354.2" stroke="#fff" stroke-width="2.5"/><circle cx="844.0" cy="354.2" r="5" fill="#fff"/>
+<text x="984.0" y="342" font-family="Inter" font-size="21" font-weight="800" fill="#fff" text-anchor="middle">QNX Microkernel IPC</text>
+<text x="984.0" y="368" font-family="Inter" font-size="15" font-weight="600" fill="#CFE0F5" text-anchor="middle">name: "adas_fusion"</text>
+<text x="984.0" y="390" font-family="Inter" font-size="15" font-weight="600" fill="#CFE0F5" text-anchor="middle">messages · pulses · priority</text>
+<text x="984.0" y="410" font-family="Inter" font-size="15" font-weight="600" fill="#CFE0F5" text-anchor="middle">inheritance · memory protection</text>
+<text x="984.0" y="434" font-family="Inter" font-size="14" font-weight="700" fill="#FFD27A" text-anchor="middle">7–20 µs per message</text>
+<polyline points="734,479 768,479 768,420 778,420" fill="none" stroke="#1F5FA8" stroke-width="2.6" marker-end="url(#m0)"/>
+<polyline points="734,601 800,601 800,454" fill="none" stroke="#D7322B" stroke-width="2.2" stroke-dasharray="6 5" marker-end="url(#m3)"/>
+<path d="M946.0,466 L970.0,490 M970.0,466 L946.0,490" stroke="#D7322B" stroke-width="5" stroke-linecap="round"/>
+<rect x="796" y="510" width="324" height="50" rx="10" fill="#FDE8E7" stroke="#F0A19C" stroke-width="1.6"/>
+<text x="958.0" y="541" font-family="Inter" font-size="15.5" font-weight="700" fill="#1C2430" text-anchor="middle">Sensor process crashes</text>
+<polyline points="958.0,560 958.0,578" fill="none" stroke="#1C2430" stroke-width="2" marker-end="url(#m1)"/>
+<rect x="796" y="582" width="324" height="50" rx="10" fill="#FFF6D6" stroke="#F2D27A" stroke-width="1.6"/>
+<text x="958.0" y="613" font-family="Inter" font-size="15.5" font-weight="700" fill="#1C2430" text-anchor="middle">Kernel DISCONNECT pulse</text>
+<polyline points="958.0,632 958.0,650" fill="none" stroke="#1C2430" stroke-width="2" marker-end="url(#m1)"/>
+<rect x="796" y="654" width="324" height="50" rx="10" fill="#FDEBDD" stroke="#F4B88C" stroke-width="1.6"/>
+<text x="958.0" y="685" font-family="Inter" font-size="15.5" font-weight="700" fill="#1C2430" text-anchor="middle">Sensor OFFLINE · fusion continues</text>
+<polyline points="958.0,704 958.0,722" fill="none" stroke="#1C2430" stroke-width="2" marker-end="url(#m1)"/>
+<rect x="796" y="726" width="324" height="50" rx="10" fill="#EAF7EC" stroke="#8FCF9F" stroke-width="1.6"/>
+<text x="958.0" y="757" font-family="Inter" font-size="15.5" font-weight="700" fill="#1C2430" text-anchor="middle">Restart → name_open() reconnect</text>
+<polyline points="958.0,494 958.0,506" fill="none" stroke="#1C2430" stroke-width="2" marker-end="url(#m1)"/>
+<text x="958.0" y="798" font-family="Inter" font-size="13.5" font-weight="600" fill="#1E7A3E" text-anchor="middle" font-style="italic">back online in ≤ 1 s</text>
+<polyline points="796,751 748,751 748,520 738,520" fill="none" stroke="#4F5966" stroke-width="1.8" stroke-dasharray="6 5" marker-end="url(#m4)"/>
+<text x="788" y="744" font-family="Inter" font-size="12.5" font-weight="600" fill="#4F5966" text-anchor="end">reconnect</text>
+<rect x="1162" y="108" width="740" height="692" rx="14" fill="#EAF7EC" stroke="#8FCF9F" stroke-width="2"/>
+<rect x="1232.0" y="118" width="600" height="42" rx="21.0" fill="#1E7A3E"/>
+<text x="1532.0" y="147.0" font-family="Inter" font-size="22" font-weight="700" fill="#fff" text-anchor="middle">Fusion Server<tspan font-size="15.84" font-weight="600"> (prio 30 · every 20 ms)</tspan></text>
+<rect x="1208" y="172" width="450" height="98" rx="10" fill="#FFFFFF" stroke="#8FCF9F" stroke-width="1.6"/>
+<text x="1286" y="198" font-family="Inter" font-size="16" font-weight="700" fill="#1C2430" text-anchor="start">1. Receive &amp; Validate</text>
+<circle cx="1294" cy="215" r="2.6" fill="#1C2430"/>
+<text x="1304" y="220" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">MsgReceivev → 2 IOV buffers (header | samples)</text>
+<circle cx="1294" cy="234" r="2.6" fill="#1C2430"/>
+<text x="1304" y="239" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">check type, size, sequence number</text>
+<circle cx="1294" cy="253" r="2.6" fill="#1C2430"/>
+<text x="1304" y="258" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">health pulses · DISCONNECT → OFFLINE</text>
+<rect x="1224" y="205.0" width="48" height="32" rx="4" fill="#fff" stroke="#1E7A3E" stroke-width="3.5"/>
+<path d="M1226,208.0 L1248,225.0 L1270,208.0" stroke="#1E7A3E" stroke-width="3.5" fill="none"/>
+<polyline points="1433.0,270 1433.0,290" fill="none" stroke="#1C2430" stroke-width="2.2" marker-end="url(#m1)"/>
+<polyline points="1134,330 1184,330 1184,222 1204,222" fill="none" stroke="#1E7A3E" stroke-width="2.6" marker-end="url(#m2)"/>
+<rect x="1208" y="294" width="450" height="112" rx="10" fill="#FFFFFF" stroke="#8FCF9F" stroke-width="1.6"/>
+<text x="1286" y="320" font-family="Inter" font-size="16" font-weight="700" fill="#1C2430" text-anchor="start">2. Fuse (Kalman filter)</text>
+<circle cx="1294" cy="337" r="2.6" fill="#1C2430"/>
+<text x="1304" y="342" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">state [distance, closing speed]</text>
+<circle cx="1294" cy="356" r="2.6" fill="#1C2430"/>
+<text x="1304" y="361" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">predict with IMU ego-acceleration</text>
+<circle cx="1294" cy="375" r="2.6" fill="#1C2430"/>
+<text x="1304" y="380" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">update: ultrasonic (±2 cm) + camera (±6 %)</text>
+<circle cx="1294" cy="394" r="2.6" fill="#1C2430"/>
+<text x="1304" y="399" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">camera auto-calibrated from ultrasonic</text>
+<rect x="1228" y="353.0" width="10" height="14" rx="2" fill="#1E7A3E"/>
+<rect x="1242" y="343.0" width="10" height="24" rx="2" fill="#1E7A3E"/>
+<rect x="1256" y="333.0" width="10" height="34" rx="2" fill="#1E7A3E"/>
+<path d="M1226,346.0 L1240,336.0 L1252,342.0 L1270,328.0" stroke="#D7322B" stroke-width="3" fill="none" stroke-linecap="round"/>
+<text x="1212" y="446" font-family="Inter" font-size="15" font-weight="700" fill="#1C2430" text-anchor="start">3. Assess risk</text>
+<text x="1212" y="466" font-family="Inter" font-size="14" font-weight="600" fill="#4F5966" text-anchor="start">TTC = d ÷ v</text>
+<polyline points="1433.0,406 1433.0,462" fill="none" stroke="#1C2430" stroke-width="2.2" marker-end="url(#m1)"/>
+<polygon points="1433.0,462 1583.0,512 1433.0,562 1283.0,512" fill="#FFF6D6" stroke="#E09A00" stroke-width="2"/>
+<text x="1433.0" y="508" font-family="Inter" font-size="14" font-weight="700" fill="#1C2430" text-anchor="middle">TTC &lt; 4 s</text>
+<text x="1433.0" y="526" font-family="Inter" font-size="14" font-weight="700" fill="#1C2430" text-anchor="middle">or gap &lt; 50 cm?</text>
+<polyline points="1583.0,512 1686,512" fill="none" stroke="#D7322B" stroke-width="2.4" marker-end="url(#m3)"/>
+<text x="1608.0" y="502" font-family="Inter" font-size="16" font-weight="800" fill="#D7322B" text-anchor="start">Yes</text>
+<rect x="1690" y="440" width="200" height="150" rx="10" fill="#FDE8E7" stroke="#F0A19C" stroke-width="1.6"/>
+<path d="M1776,484 L1776,472 Q1776,458 1790,458 Q1804,458 1804,472 L1804,484 Z" fill="#D7322B"/>
+<rect x="1770" y="484" width="40" height="8" rx="2" fill="#D7322B"/>
+<line x1="1766" y1="458" x2="1760" y2="452" stroke="#D7322B" stroke-width="3" stroke-linecap="round"/>
+<line x1="1814" y1="458" x2="1820" y2="452" stroke="#D7322B" stroke-width="3" stroke-linecap="round"/>
+<line x1="1790" y1="452" x2="1790" y2="444" stroke="#D7322B" stroke-width="3" stroke-linecap="round"/>
+<line x1="1768" y1="472" x2="1760" y2="472" stroke="#D7322B" stroke-width="3" stroke-linecap="round"/>
+<line x1="1812" y1="472" x2="1820" y2="472" stroke="#D7322B" stroke-width="3" stroke-linecap="round"/>
+<text x="1790" y="520" font-family="Inter" font-size="17" font-weight="800" fill="#1C2430" text-anchor="middle">Driver Alert</text>
+<rect x="1704" y="530" width="172" height="17" rx="4" fill="#E09A00"/>
+<text x="1790" y="543" font-family="Inter" font-size="11.5" font-weight="700" fill="#fff" text-anchor="middle">WARNING  &lt; 4 s</text>
+<rect x="1704" y="549" width="172" height="17" rx="4" fill="#D7322B"/>
+<text x="1790" y="562" font-family="Inter" font-size="11.5" font-weight="700" fill="#fff" text-anchor="middle">CRITICAL  &lt; 2 s</text>
+<rect x="1704" y="568" width="172" height="17" rx="4" fill="#85352E"/>
+<text x="1790" y="581" font-family="Inter" font-size="11.5" font-weight="700" fill="#fff" text-anchor="middle">EMERGENCY  &lt; 1 s</text>
+<polyline points="1433.0,562 1433.0,590" fill="none" stroke="#1E7A3E" stroke-width="2.4" marker-end="url(#m2)"/>
+<text x="1443.0" y="582" font-family="Inter" font-size="16" font-weight="800" fill="#1E7A3E" text-anchor="start">No</text>
+<rect x="1268" y="594" width="330" height="46" rx="10" fill="#FFFFFF" stroke="#8FCF9F" stroke-width="1.6"/>
+<text x="1433.0" y="623" font-family="Inter" font-size="15.5" font-weight="700" fill="#1E7A3E" text-anchor="middle">SAFE · keep tracking</text>
+<rect x="1208" y="664" width="450" height="122" rx="10" fill="#FFFFFF" stroke="#8FCF9F" stroke-width="1.6"/>
+<text x="1286" y="690" font-family="Inter" font-size="16" font-weight="700" fill="#1C2430" text-anchor="start">4. Publish &amp; Self-monitor</text>
+<circle cx="1294" cy="707" r="2.6" fill="#1C2430"/>
+<text x="1304" y="712" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">shared memory /adas_state (seqlock)</text>
+<circle cx="1294" cy="726" r="2.6" fill="#1C2430"/>
+<text x="1304" y="731" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">MsgDeliverEvent → wake dashboard</text>
+<circle cx="1294" cy="745" r="2.6" fill="#1C2430"/>
+<text x="1304" y="750" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">deadline monitor: 0 misses, worst 501 µs</text>
+<circle cx="1294" cy="764" r="2.6" fill="#1C2430"/>
+<text x="1304" y="769" font-family="Inter" font-size="13.5" font-weight="400" fill="#1C2430" text-anchor="start">escalate now, relax after 200 ms</text>
+<path d="M1228,735.0 L1228,745.0 A20,6 0 0 0 1268,745.0 L1268,735.0 Z" fill="#1E7A3E" stroke="#fff" stroke-width="1.5"/>
+<path d="M1228,723.0 L1228,733.0 A20,6 0 0 0 1268,733.0 L1268,723.0 Z" fill="#1E7A3E" stroke="#fff" stroke-width="1.5"/>
+<path d="M1228,711.0 L1228,721.0 A20,6 0 0 0 1268,721.0 L1268,711.0 Z" fill="#1E7A3E" stroke="#fff" stroke-width="1.5"/>
+<ellipse cx="1248" cy="711.0" rx="20" ry="6" fill="#1E7A3E" stroke="#fff" stroke-width="1.5"/>
+<polyline points="1433.0,640 1433.0,660" fill="none" stroke="#1C2430" stroke-width="2.2" marker-end="url(#m1)"/>
+<polyline points="1790,590 1790,612 1672,612 1672,690 1662,690" fill="none" stroke="#D7322B" stroke-width="2" marker-end="url(#m3)"/>
+<rect x="1690" y="620" width="200" height="166" rx="10" fill="#FFFFFF" stroke="#8FCF9F" stroke-width="1.6"/>
+<rect x="1764" y="632" width="52" height="34" rx="4" fill="#fff" stroke="#1E7A3E" stroke-width="4"/>
+<path d="M1772,650 L1782,650 L1787,640 L1793,660 L1798,650 L1808,650" stroke="#D7322B" stroke-width="2.6" fill="none"/>
+<rect x="1786" y="666" width="8" height="7" fill="#1E7A3E"/><rect x="1776" y="672" width="28" height="5" rx="2" fill="#1E7A3E"/>
+<text x="1790" y="698" font-family="Inter" font-size="16" font-weight="800" fill="#1C2430" text-anchor="middle">Live Dashboard</text>
+<text x="1790" y="720" font-family="Inter" font-size="12.5" font-weight="400" fill="#4F5966" text-anchor="middle">all 3 sensors + health</text>
+<text x="1790" y="737" font-family="Inter" font-size="12.5" font-weight="400" fill="#4F5966" text-anchor="middle">distance · TTC</text>
+<text x="1790" y="754" font-family="Inter" font-size="12.5" font-weight="400" fill="#4F5966" text-anchor="middle">decision · PASS/FAIL</text>
+<text x="1790" y="771" font-family="Inter" font-size="12.5" font-weight="400" fill="#4F5966" text-anchor="middle">Pi HDMI display</text>
+<polyline points="1658,740 1686,740" fill="none" stroke="#1E7A3E" stroke-width="2.4" marker-end="url(#m2)"/>
+<rect x="1690" y="172" width="200" height="250" rx="10" fill="#FFFFFF" stroke="#B9C2CC" stroke-width="1.6" stroke-dasharray="6 5"/>
+<text x="1790" y="198" font-family="Inter" font-size="15" font-weight="800" fill="#4F5966" text-anchor="middle">Planned outputs</text>
+<text x="1790" y="226" font-family="Inter" font-size="13" font-weight="400" fill="#4F5966" text-anchor="middle">buzzer / LED on GPIO</text>
+<text x="1790" y="248" font-family="Inter" font-size="13" font-weight="400" fill="#4F5966" text-anchor="middle">for audible alarm</text>
+<text x="1790" y="270" font-family="Inter" font-size="13" font-weight="400" fill="#4F5966" text-anchor="middle"></text>
+<text x="1790" y="292" font-family="Inter" font-size="13" font-weight="400" fill="#4F5966" text-anchor="middle">CAN-FD message to</text>
+<text x="1790" y="314" font-family="Inter" font-size="13" font-weight="400" fill="#4F5966" text-anchor="middle">brake ECU</text>
+<text x="1790" y="336" font-family="Inter" font-size="13" font-weight="400" fill="#4F5966" text-anchor="middle"></text>
+<text x="1790" y="358" font-family="Inter" font-size="13" font-weight="400" fill="#4F5966" text-anchor="middle">QNX HAM: auto-restart</text>
+<text x="1790" y="380" font-family="Inter" font-size="13" font-weight="400" fill="#4F5966" text-anchor="middle">failed sensor nodes</text>
+<polyline points="1790,440 1790,426" fill="none" stroke="#4F5966" stroke-width="1.8" stroke-dasharray="4 4" marker-end="url(#m4)"/>
+<rect x="18" y="820" width="1884" height="246" rx="14" fill="#F5F7FA" stroke="#D3DAE3" stroke-width="2"/>
+<rect x="770.0" y="806" width="380" height="40" rx="20.0" fill="#173A63"/>
+<text x="960" y="834.0" font-family="Inter" font-size="20" font-weight="700" fill="#fff" text-anchor="middle">System Operation Flow</text>
+<rect x="40" y="862" width="432" height="186" rx="12" fill="#EAF3FC" stroke="#8DB8E6" stroke-width="1.6"/>
+<circle cx="82" cy="900" r="24" fill="#1F5FA8"/>
+<text x="82" y="909" font-family="Inter" font-size="24" font-weight="800" fill="#fff" text-anchor="middle">1</text>
+<text x="120" y="908" font-family="Inter" font-size="20" font-weight="800" fill="#1C2430" text-anchor="start">Normal Operation</text>
+<circle cx="70" cy="947" r="2.6" fill="#1C2430"/>
+<text x="80" y="952" font-family="Inter" font-size="15" font-weight="400" fill="#1C2430" text-anchor="start">3 sensors sample on their own timers</text>
+<circle cx="70" cy="972" r="2.6" fill="#1C2430"/>
+<text x="80" y="977" font-family="Inter" font-size="15" font-weight="400" fill="#1C2430" text-anchor="start">records sent as IOV messages</text>
+<circle cx="70" cy="997" r="2.6" fill="#1C2430"/>
+<text x="80" y="1002" font-family="Inter" font-size="15" font-weight="400" fill="#1C2430" text-anchor="start">fusion decides every 20 ms</text>
+<circle cx="70" cy="1022" r="2.6" fill="#1C2430"/>
+<text x="80" y="1027" font-family="Inter" font-size="15" font-weight="400" fill="#1C2430" text-anchor="start">dashboard shows SAFE / WARNING …</text>
+<polyline points="474,955 500,955" fill="none" stroke="#1C2430" stroke-width="3" marker-end="url(#m1)"/>
+<rect x="502" y="862" width="432" height="186" rx="12" fill="#FFF6D6" stroke="#F2D27A" stroke-width="1.6"/>
+<circle cx="544" cy="900" r="24" fill="#E09A00"/>
+<text x="544" y="909" font-family="Inter" font-size="24" font-weight="800" fill="#fff" text-anchor="middle">2</text>
+<text x="582" y="908" font-family="Inter" font-size="20" font-weight="800" fill="#1C2430" text-anchor="start">Sensor Failure</text>
+<circle cx="532" cy="947" r="2.6" fill="#1C2430"/>
+<text x="542" y="952" font-family="Inter" font-size="15" font-weight="400" fill="#1C2430" text-anchor="start">process crash or silent sensor</text>
+<circle cx="532" cy="972" r="2.6" fill="#1C2430"/>
+<text x="542" y="977" font-family="Inter" font-size="15" font-weight="400" fill="#1C2430" text-anchor="start">kernel DISCONNECT pulse, or</text>
+<circle cx="532" cy="997" r="2.6" fill="#1C2430"/>
+<text x="542" y="1002" font-family="Inter" font-size="15" font-weight="400" fill="#1C2430" text-anchor="start">500 ms stale-data watchdog</text>
+<circle cx="532" cy="1022" r="2.6" fill="#1C2430"/>
+<text x="542" y="1027" font-family="Inter" font-size="15" font-weight="400" fill="#1C2430" text-anchor="start">sensor OFFLINE or DEGRADED</text>
+<polyline points="936,955 962,955" fill="none" stroke="#1C2430" stroke-width="3" marker-end="url(#m1)"/>
+<rect x="964" y="862" width="432" height="186" rx="12" fill="#FDEBDD" stroke="#F4B88C" stroke-width="1.6"/>
+<circle cx="1006" cy="900" r="24" fill="#E0702A"/>
+<text x="1006" y="909" font-family="Inter" font-size="24" font-weight="800" fill="#fff" text-anchor="middle">3</text>
+<text x="1044" y="908" font-family="Inter" font-size="20" font-weight="800" fill="#1C2430" text-anchor="start">Degraded Operation</text>
+<circle cx="994" cy="947" r="2.6" fill="#1C2430"/>
+<text x="1004" y="952" font-family="Inter" font-size="15" font-weight="400" fill="#1C2430" text-anchor="start">fusion keeps its 20 ms deadline</text>
+<circle cx="994" cy="972" r="2.6" fill="#1C2430"/>
+<text x="1004" y="977" font-family="Inter" font-size="15" font-weight="400" fill="#1C2430" text-anchor="start">camera carries the distance track</text>
+<circle cx="994" cy="997" r="2.6" fill="#1C2430"/>
+<text x="1004" y="1002" font-family="Inter" font-size="15" font-weight="400" fill="#1C2430" text-anchor="start">camera auto-calibrated earlier</text>
+<circle cx="994" cy="1022" r="2.6" fill="#1C2430"/>
+<text x="1004" y="1027" font-family="Inter" font-size="15" font-weight="400" fill="#1C2430" text-anchor="start">alerts still raised</text>
+<polyline points="1398,955 1424,955" fill="none" stroke="#1C2430" stroke-width="3" marker-end="url(#m1)"/>
+<rect x="1426" y="862" width="432" height="186" rx="12" fill="#EAF7EC" stroke="#8FCF9F" stroke-width="1.6"/>
+<circle cx="1468" cy="900" r="24" fill="#1E7A3E"/>
+<text x="1468" y="909" font-family="Inter" font-size="24" font-weight="800" fill="#fff" text-anchor="middle">4</text>
+<text x="1506" y="908" font-family="Inter" font-size="20" font-weight="800" fill="#1C2430" text-anchor="start">Recovery</text>
+<circle cx="1456" cy="947" r="2.6" fill="#1C2430"/>
+<text x="1466" y="952" font-family="Inter" font-size="15" font-weight="400" fill="#1C2430" text-anchor="start">node restarted</text>
+<circle cx="1456" cy="972" r="2.6" fill="#1C2430"/>
+<text x="1466" y="977" font-family="Inter" font-size="15" font-weight="400" fill="#1C2430" text-anchor="start">name_open() reconnects ≤ 1 s</text>
+<circle cx="1456" cy="997" r="2.6" fill="#1C2430"/>
+<text x="1466" y="1002" font-family="Inter" font-size="15" font-weight="400" fill="#1C2430" text-anchor="start">samples resume, track re-confirmed</text>
+<circle cx="1456" cy="1022" r="2.6" fill="#1C2430"/>
+<text x="1466" y="1027" font-family="Inter" font-size="15" font-weight="400" fill="#1C2430" text-anchor="start">full fusion restored</text>
+</svg>

@@ -1,0 +1,274 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1180" viewBox="0 0 1920 1180">
+<defs>
+<marker id="aD" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1B1F22"/></marker>
+<marker id="aG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5E5D5A"/></marker>
+<marker id="aL" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9A958E"/></marker>
+<marker id="aR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#E8382F"/></marker>
+<marker id="aGr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2E8B57"/></marker>
+<marker id="aP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7B4FA0"/></marker>
+<marker id="aB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2563A6"/></marker>
+<marker id="aA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D98E04"/></marker>
+</defs>
+<rect x="0" y="0" width="1920" height="1180" rx="0" fill="#FFFFFF"/>
+<text x="40" y="58" font-family="Inter" font-size="34" font-weight="700" fill="#1B1F22" text-anchor="start">ADAS Sensor Fusion on QNX — System Architecture</text>
+<text x="40" y="90" font-family="Inter" font-size="16" font-weight="400" fill="#5E5D5A" text-anchor="start">Team FusionDrive · QNXHACK-HYD-TEAM-026 · Raspberry Pi 4 Model B · QNX SDP 8.0 · 3 real sensors · 5 processes · 50 Hz loop, 20 ms deadline</text>
+<text x="1880" y="58" font-family="Inter" font-size="20" font-weight="700" fill="#E8382F" text-anchor="end">QNX India Hackathon</text>
+<text x="1880" y="90" font-family="Inter" font-size="15" font-weight="600" fill="#1B1F22" text-anchor="end">Team: Sakilam Adithya · Dubbaka Manoj Goud · Soma Praneeth Kumar</text>
+<text x="40" y="132" font-family="Inter" font-size="14" font-weight="700" fill="#E8382F" text-anchor="start">① HARDWARE</text>
+<line x1="40" y1="142" x2="290" y2="142" stroke="#E5E0D8" stroke-width="2"/>
+<text x="330" y="132" font-family="Inter" font-size="14" font-weight="700" fill="#E8382F" text-anchor="start">② QNX DRIVERS / SERVICES</text>
+<line x1="330" y1="142" x2="620" y2="142" stroke="#E5E0D8" stroke-width="2"/>
+<text x="660" y="132" font-family="Inter" font-size="14" font-weight="700" fill="#E8382F" text-anchor="start">③ SENSOR PROCESSES</text>
+<line x1="660" y1="142" x2="960" y2="142" stroke="#E5E0D8" stroke-width="2"/>
+<text x="1090" y="132" font-family="Inter" font-size="14" font-weight="700" fill="#E8382F" text-anchor="start">④ FUSION SERVER</text>
+<line x1="1090" y1="142" x2="1530" y2="142" stroke="#E5E0D8" stroke-width="2"/>
+<text x="1580" y="132" font-family="Inter" font-size="14" font-weight="700" fill="#E8382F" text-anchor="start">⑤ OUTPUT</text>
+<line x1="1580" y1="142" x2="1880" y2="142" stroke="#E5E0D8" stroke-width="2"/>
+<rect x="40" y="175" width="250" height="200" rx="12" fill="#FFFFFF" stroke="#D6D0C7" stroke-width="1.5"/>
+<rect x="40" y="175" width="250" height="36" rx="12" fill="#4A4F55"/>
+<rect x="40" y="199" width="250" height="12" rx="0" fill="#4A4F55"/>
+<text x="54" y="199" font-family="Inter" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="start">MPU6050 IMU</text>
+<text x="54" y="235" font-family="Inter" font-size="13.5" font-weight="700" fill="#1B1F22" text-anchor="start">I2C1 · addr 0x68</text>
+<text x="54" y="256" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">SDA pin 3 · SCL pin 5</text>
+<text x="54" y="277" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">3.3 V pin 1 · GND pin 6</text>
+<text x="54" y="298" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">own clock: 200 Hz</text>
+<text x="54" y="319" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">1 KB hardware FIFO</text>
+<text x="54" y="340" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">±4 g · ±500 °/s</text>
+<rect x="40" y="410" width="250" height="200" rx="12" fill="#FFFFFF" stroke="#D6D0C7" stroke-width="1.5"/>
+<rect x="40" y="410" width="250" height="36" rx="12" fill="#4A4F55"/>
+<rect x="40" y="434" width="250" height="12" rx="0" fill="#4A4F55"/>
+<text x="54" y="434" font-family="Inter" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="start">HC-SR04 Ultrasonic</text>
+<text x="54" y="470" font-family="Inter" font-size="13.5" font-weight="700" fill="#1B1F22" text-anchor="start">GPIO23 TRIG · GPIO24 ECHO</text>
+<text x="54" y="491" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">5 V pin 2 · GND pin 14</text>
+<text x="54" y="512" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">ECHO via 1 kΩ / 2 kΩ</text>
+<text x="54" y="533" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">  divider (5 V → 3.3 V)</text>
+<text x="54" y="554" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">range 2 cm – 4 m</text>
+<text x="54" y="575" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">ping every 66 ms (15 Hz)</text>
+<rect x="40" y="645" width="250" height="200" rx="12" fill="#FFFFFF" stroke="#D6D0C7" stroke-width="1.5"/>
+<rect x="40" y="645" width="250" height="36" rx="12" fill="#4A4F55"/>
+<rect x="40" y="669" width="250" height="12" rx="0" fill="#4A4F55"/>
+<text x="54" y="669" font-family="Inter" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="start">Logitech C920</text>
+<text x="54" y="705" font-family="Inter" font-size="13.5" font-weight="700" fill="#1B1F22" text-anchor="start">USB 3.0 (blue port)</text>
+<text x="54" y="726" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">UVC webcam</text>
+<text x="54" y="747" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">640 × 480 @ 30 fps</text>
+<text x="54" y="768" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">YCbYCr 4:2:2 frames</text>
+<text x="54" y="789" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">red colour test target</text>
+<text x="54" y="810" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start"></text>
+<rect x="330" y="175" width="290" height="200" rx="12" fill="#FFFFFF" stroke="#D6D0C7" stroke-width="1.5"/>
+<rect x="330" y="175" width="290" height="36" rx="12" fill="#2563A6"/>
+<rect x="330" y="199" width="290" height="12" rx="0" fill="#2563A6"/>
+<text x="344" y="199" font-family="Inter" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="start">i2c-bcm2711</text>
+<text x="344" y="235" font-family="Inter" font-size="13.5" font-weight="700" fill="#1B1F22" text-anchor="start">resource manager /dev/i2c1</text>
+<text x="344" y="256" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">devctl(DCMD_I2C_SENDRECV)</text>
+<text x="344" y="277" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">DCMD_I2C_SET_BUS_SPEED 400 kHz</text>
+<text x="344" y="298" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">kernel-protected bus access</text>
+<text x="344" y="319" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start"></text>
+<text x="344" y="340" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start"></text>
+<rect x="330" y="410" width="290" height="200" rx="12" fill="#FFFFFF" stroke="#D6D0C7" stroke-width="1.5"/>
+<rect x="330" y="410" width="290" height="36" rx="12" fill="#2563A6"/>
+<rect x="330" y="434" width="290" height="12" rx="0" fill="#2563A6"/>
+<text x="344" y="434" font-family="Inter" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="start">BCM2711 GPIO + GIC</text>
+<text x="344" y="470" font-family="Inter" font-size="13.5" font-weight="700" fill="#1B1F22" text-anchor="start">mmap_device_memory</text>
+<text x="344" y="491" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">  0xFE200000 (root only)</text>
+<text x="344" y="512" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">edge detect GPREN/GPFEN</text>
+<text x="344" y="533" font-family="Inter" font-size="13.5" font-weight="700" fill="#1B1F22" text-anchor="start">GPIO bank-0 IRQ 145</text>
+<text x="344" y="554" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">InterruptAttachEvent → pulse</text>
+<text x="344" y="575" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">ARM counter 54 MHz (ClockCycles)</text>
+<rect x="330" y="645" width="290" height="200" rx="12" fill="#FFFFFF" stroke="#D6D0C7" stroke-width="1.5"/>
+<rect x="330" y="645" width="290" height="36" rx="12" fill="#2563A6"/>
+<rect x="330" y="669" width="290" height="12" rx="0" fill="#2563A6"/>
+<text x="344" y="669" font-family="Inter" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="start">QNX Sensor Framework</text>
+<text x="344" y="705" font-family="Inter" font-size="13.5" font-weight="700" fill="#1B1F22" text-anchor="start">sensor service (uid 521)</text>
+<text x="344" y="726" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">config sensor_rpi4.conf</text>
+<text x="344" y="747" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">SENSOR_UNIT_4 = usb_camera</text>
+<text x="344" y="768" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">/dev/sensor/camera4</text>
+<text x="344" y="789" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">io-usb-otg (USB stack)</text>
+<text x="344" y="810" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">libcamapi client API</text>
+<line x1="292" y1="275.0" x2="326" y2="275.0" stroke="#9A958E" stroke-width="2.4" marker-end="url(#aL)"/>
+<text x="309" y="265.0" font-family="Inter" font-size="10.5" font-weight="600" fill="#5E5D5A" text-anchor="middle">I2C bus</text>
+<line x1="292" y1="510.0" x2="326" y2="510.0" stroke="#9A958E" stroke-width="2.4" marker-end="url(#aL)"/>
+<text x="309" y="500.0" font-family="Inter" font-size="10.5" font-weight="600" fill="#5E5D5A" text-anchor="middle">GPIO edges</text>
+<line x1="292" y1="745.0" x2="326" y2="745.0" stroke="#9A958E" stroke-width="2.4" marker-end="url(#aL)"/>
+<text x="309" y="735.0" font-family="Inter" font-size="10.5" font-weight="600" fill="#5E5D5A" text-anchor="middle">USB 3.0</text>
+<rect x="660" y="175" width="300" height="200" rx="12" fill="#FFFFFF" stroke="#D6D0C7" stroke-width="1.5"/>
+<rect x="660" y="175" width="300" height="36" rx="12" fill="#1B1F22"/>
+<rect x="660" y="199" width="300" height="12" rx="0" fill="#1B1F22"/>
+<text x="674" y="199" font-family="Inter" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="start">imu</text>
+<text x="948" y="199" font-family="Inter" font-size="12.5" font-weight="600" fill="#FFFFFF" text-anchor="end">imu_acq · FIFO 28</text>
+<text x="674" y="235" font-family="Inter" font-size="13.5" font-weight="700" fill="#1B1F22" text-anchor="start">FIFO batch read every 20 ms</text>
+<text x="674" y="256" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">per-sample timestamps (MONOTONIC)</text>
+<text x="674" y="277" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">sensor clock-drift estimate</text>
+<text x="674" y="298" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">gyro bias self-calibration</text>
+<text x="674" y="319" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">roll / pitch complementary filter</text>
+<text x="674" y="340" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">health: OK · DEGRADED · FAULT</text>
+<rect x="660" y="410" width="300" height="200" rx="12" fill="#FFFFFF" stroke="#D6D0C7" stroke-width="1.5"/>
+<rect x="660" y="410" width="300" height="36" rx="12" fill="#1B1F22"/>
+<rect x="660" y="434" width="300" height="12" rx="0" fill="#1B1F22"/>
+<text x="674" y="434" font-family="Inter" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="start">ultrasonic</text>
+<text x="948" y="434" font-family="Inter" font-size="12.5" font-weight="600" fill="#FFFFFF" text-anchor="end">us_ping · FIFO 29</text>
+<text x="674" y="470" font-family="Inter" font-size="13.5" font-weight="700" fill="#1B1F22" text-anchor="start">echo timed by IRQ + cycle counter</text>
+<text x="674" y="491" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">timestamp = reflection instant</text>
+<text x="674" y="512" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">speed of sound vs temperature</text>
+<text x="674" y="533" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">α-β tracker · 2-echo confirm</text>
+<text x="674" y="554" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">polling fallback if no IRQ</text>
+<text x="674" y="575" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">health: OK · NO TARGET · FAULT</text>
+<rect x="660" y="645" width="300" height="200" rx="12" fill="#FFFFFF" stroke="#D6D0C7" stroke-width="1.5"/>
+<rect x="660" y="645" width="300" height="36" rx="12" fill="#1B1F22"/>
+<rect x="660" y="669" width="300" height="12" rx="0" fill="#1B1F22"/>
+<text x="674" y="669" font-family="Inter" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="start">camera</text>
+<text x="948" y="669" font-family="Inter" font-size="12.5" font-weight="600" fill="#FFFFFF" text-anchor="end">libcamapi callback</text>
+<text x="674" y="705" font-family="Inter" font-size="13.5" font-weight="700" fill="#1B1F22" text-anchor="start">viewfinder callback, 30 fps</text>
+<text x="674" y="726" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">colour-target blob, native format</text>
+<text x="674" y="747" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">target size + centroid</text>
+<text x="674" y="768" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">TTC from image expansion</text>
+<text x="674" y="789" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">frame time = CLOCK_MONOTONIC</text>
+<text x="674" y="810" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">health: OK · NO TARGET · FAULT</text>
+<line x1="622" y1="275" x2="656" y2="275" stroke="#2563A6" stroke-width="2.4" marker-end="url(#aB)"/>
+<text x="639" y="265" font-family="Inter" font-size="10.5" font-weight="600" fill="#2563A6" text-anchor="middle">devctl</text>
+<line x1="622" y1="492" x2="656" y2="492" stroke="#D98E04" stroke-width="2.4" stroke-dasharray="6 4" marker-end="url(#aA)"/>
+<text x="639" y="482" font-family="Inter" font-size="10.5" font-weight="700" fill="#D98E04" text-anchor="middle">IRQ</text>
+<line x1="622" y1="538" x2="656" y2="538" stroke="#2563A6" stroke-width="2.4" marker-end="url(#aB)"/>
+<text x="639" y="558" font-family="Inter" font-size="10.5" font-weight="600" fill="#2563A6" text-anchor="middle">regs</text>
+<line x1="622" y1="745" x2="656" y2="745" stroke="#2563A6" stroke-width="2.4" marker-end="url(#aB)"/>
+<text x="639" y="735" font-family="Inter" font-size="10.5" font-weight="600" fill="#2563A6" text-anchor="middle">frames</text>
+<rect x="1090" y="175" width="440" height="670" rx="16" fill="#F4EBE1" stroke="#E2D6C6" stroke-width="2"/>
+<rect x="1090" y="175" width="440" height="44" rx="16" fill="#E8382F"/>
+<rect x="1090" y="205" width="440" height="14" rx="0" fill="#E8382F"/>
+<text x="1106" y="205" font-family="Inter" font-size="21" font-weight="700" fill="#FFFFFF" text-anchor="start">fusion server</text>
+<text x="1514" y="205" font-family="Inter" font-size="13.5" font-weight="600" fill="#FFFFFF" text-anchor="end">name_attach("adas_fusion")</text>
+<rect x="1106" y="235" width="408" height="112" rx="10" fill="#FFFFFF" stroke="#D6D0C7" stroke-width="1.5"/>
+<text x="1120" y="259" font-family="Inter" font-size="16" font-weight="700" fill="#1B1F22" text-anchor="start">fusion_rx</text>
+<text x="1500" y="259" font-family="Inter" font-size="12.5" font-weight="600" fill="#5E5D5A" text-anchor="end">prio 20, inherits sender</text>
+<text x="1120" y="283" font-family="Inter" font-size="13" font-weight="400" fill="#5E5D5A" text-anchor="start">MsgReceivev(): header + samples in 2 IOV buffers</text>
+<text x="1120" y="303" font-family="Inter" font-size="13" font-weight="400" fill="#5E5D5A" text-anchor="start">pulses: health · kernel DISCONNECT → sensor OFFLINE</text>
+<text x="1120" y="323" font-family="Inter" font-size="13" font-weight="400" fill="#5E5D5A" text-anchor="start">sequence numbers → lost-message count, IPC latency</text>
+<rect x="1106" y="361" width="408" height="400" rx="10" fill="#FFFFFF" stroke="#D6D0C7" stroke-width="1.5"/>
+<text x="1120" y="385" font-family="Inter" font-size="16" font-weight="700" fill="#1B1F22" text-anchor="start">fusion_tick</text>
+<text x="1500" y="385" font-family="Inter" font-size="12.5" font-weight="600" fill="#5E5D5A" text-anchor="end">prio 30 · timer pulse every 20 ms</text>
+<rect x="1120" y="403" width="380" height="42" rx="8" fill="#F7F5F2"/>
+<text x="1134" y="421" font-family="Inter" font-size="13.5" font-weight="700" fill="#E8382F" text-anchor="start">1  Snapshot</text>
+<text x="1134" y="438" font-family="Inter" font-size="12.5" font-weight="400" fill="#1B1F22" text-anchor="start">latest samples, stale &gt; 500 ms → DEGRADED</text>
+<line x1="1310.0" y1="445" x2="1310.0" y2="452" stroke="#9A958E" stroke-width="1.6" marker-end="url(#aL)"/>
+<rect x="1120" y="453" width="380" height="42" rx="8" fill="#F7F5F2"/>
+<text x="1134" y="471" font-family="Inter" font-size="13.5" font-weight="700" fill="#E8382F" text-anchor="start">2  Predict</text>
+<text x="1134" y="488" font-family="Inter" font-size="12.5" font-weight="400" fill="#1B1F22" text-anchor="start">Kalman [d, v] · IMU ego-acceleration input</text>
+<line x1="1310.0" y1="495" x2="1310.0" y2="502" stroke="#9A958E" stroke-width="1.6" marker-end="url(#aL)"/>
+<rect x="1120" y="503" width="380" height="42" rx="8" fill="#F7F5F2"/>
+<text x="1134" y="521" font-family="Inter" font-size="13.5" font-weight="700" fill="#E8382F" text-anchor="start">3  Update</text>
+<text x="1134" y="538" font-family="Inter" font-size="12.5" font-weight="400" fill="#1B1F22" text-anchor="start">ultrasonic (σ 2 cm) + camera (σ 6 %), age-aligned</text>
+<line x1="1310.0" y1="545" x2="1310.0" y2="552" stroke="#9A958E" stroke-width="1.6" marker-end="url(#aL)"/>
+<rect x="1120" y="553" width="380" height="42" rx="8" fill="#F7F5F2"/>
+<text x="1134" y="571" font-family="Inter" font-size="13.5" font-weight="700" fill="#E8382F" text-anchor="start">4  Cross-calibrate</text>
+<text x="1134" y="588" font-family="Inter" font-size="12.5" font-weight="400" fill="#1B1F22" text-anchor="start">K = ultrasonic d × camera size (online)</text>
+<line x1="1310.0" y1="595" x2="1310.0" y2="602" stroke="#9A958E" stroke-width="1.6" marker-end="url(#aL)"/>
+<rect x="1120" y="603" width="380" height="42" rx="8" fill="#F7F5F2"/>
+<text x="1134" y="621" font-family="Inter" font-size="13.5" font-weight="700" fill="#E8382F" text-anchor="start">5  Decide</text>
+<text x="1134" y="638" font-family="Inter" font-size="12.5" font-weight="400" fill="#1B1F22" text-anchor="start">TTC = d ÷ v · distance floors · hysteresis</text>
+<line x1="1310.0" y1="645" x2="1310.0" y2="652" stroke="#9A958E" stroke-width="1.6" marker-end="url(#aL)"/>
+<rect x="1120" y="653" width="380" height="42" rx="8" fill="#F7F5F2"/>
+<text x="1134" y="671" font-family="Inter" font-size="13.5" font-weight="700" fill="#E8382F" text-anchor="start">6  Deadline check</text>
+<text x="1134" y="688" font-family="Inter" font-size="12.5" font-weight="400" fill="#1B1F22" text-anchor="start">exec / response time vs 20 ms → misses</text>
+<line x1="1310.0" y1="695" x2="1310.0" y2="702" stroke="#9A958E" stroke-width="1.6" marker-end="url(#aL)"/>
+<rect x="1120" y="703" width="380" height="42" rx="8" fill="#F7F5F2"/>
+<text x="1134" y="721" font-family="Inter" font-size="13.5" font-weight="700" fill="#E8382F" text-anchor="start">7  Publish</text>
+<text x="1134" y="738" font-family="Inter" font-size="12.5" font-weight="400" fill="#1B1F22" text-anchor="start">shared memory + MsgDeliverEvent</text>
+<rect x="1106.0" y="775" width="96.0" height="30" rx="7" fill="#2E8B57"/>
+<text x="1154.0" y="795" font-family="Inter" font-size="12.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">SAFE</text>
+<rect x="1210.0" y="775" width="96.0" height="30" rx="7" fill="#D98E04"/>
+<text x="1258.0" y="795" font-family="Inter" font-size="12.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">WARNING</text>
+<rect x="1314.0" y="775" width="96.0" height="30" rx="7" fill="#E8382F"/>
+<text x="1362.0" y="795" font-family="Inter" font-size="12.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">CRITICAL</text>
+<rect x="1418.0" y="775" width="96.0" height="30" rx="7" fill="#85352E"/>
+<text x="1466.0" y="795" font-family="Inter" font-size="12.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">EMERGENCY</text>
+<text x="1310.0" y="827" font-family="Inter" font-size="12.5" font-weight="600" fill="#5E5D5A" text-anchor="middle">TTC &lt; 4 s / 2 s / 1 s   or   gap &lt; 50 / 30 / 15 cm</text>
+<line x1="962" y1="255" x2="1086" y2="273" stroke="#1B1F22" stroke-width="2.6" marker-end="url(#aD)"/>
+<line x1="962" y1="295" x2="1086" y2="325" stroke="#E8382F" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#aR)"/>
+<line x1="962" y1="490" x2="1086" y2="287" stroke="#1B1F22" stroke-width="2.6" marker-end="url(#aD)"/>
+<line x1="962" y1="530" x2="1086" y2="333" stroke="#E8382F" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#aR)"/>
+<line x1="962" y1="725" x2="1086" y2="301" stroke="#1B1F22" stroke-width="2.6" marker-end="url(#aD)"/>
+<line x1="962" y1="765" x2="1086" y2="341" stroke="#E8382F" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#aR)"/>
+<text x="1026" y="241" font-family="Inter" font-size="12" font-weight="700" fill="#1B1F22" text-anchor="middle">MsgSendv</text>
+<text x="1026" y="256" font-family="Inter" font-size="11" font-weight="600" fill="#1B1F22" text-anchor="middle">(IOV)</text>
+<text x="1026" y="586" font-family="Inter" font-size="12" font-weight="700" fill="#E8382F" text-anchor="middle">health</text>
+<text x="1026" y="601" font-family="Inter" font-size="12" font-weight="700" fill="#E8382F" text-anchor="middle">pulses</text>
+<text x="1026" y="795" font-family="Inter" font-size="11" font-weight="600" fill="#5E5D5A" text-anchor="middle">hdr + samples</text>
+<text x="1026" y="810" font-family="Inter" font-size="11" font-weight="600" fill="#5E5D5A" text-anchor="middle">(4 IMU / 1 range</text>
+<text x="1026" y="825" font-family="Inter" font-size="11" font-weight="600" fill="#5E5D5A" text-anchor="middle">/ 1 detection)</text>
+<rect x="1580" y="175" width="300" height="175" rx="12" fill="#FFFFFF" stroke="#D6D0C7" stroke-width="1.5"/>
+<rect x="1580" y="175" width="300" height="36" rx="12" fill="#2E8B57"/>
+<rect x="1580" y="199" width="300" height="12" rx="0" fill="#2E8B57"/>
+<text x="1594" y="199" font-family="Inter" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="start">Shared memory</text>
+<text x="1594" y="235" font-family="Inter" font-size="13.5" font-weight="700" fill="#1B1F22" text-anchor="start">/adas_state (shm_open, mmap)</text>
+<text x="1594" y="256" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">single writer: fusion</text>
+<text x="1594" y="277" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">seqlock: readers never block</text>
+<text x="1594" y="298" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">  the real-time writer</text>
+<text x="1594" y="319" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">full fused state + RT stats</text>
+<rect x="1580" y="410" width="300" height="200" rx="12" fill="#FFFFFF" stroke="#D6D0C7" stroke-width="1.5"/>
+<rect x="1580" y="410" width="300" height="36" rx="12" fill="#1B1F22"/>
+<rect x="1580" y="434" width="300" height="12" rx="0" fill="#1B1F22"/>
+<text x="1594" y="434" font-family="Inter" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="start">dashboard</text>
+<text x="1868" y="434" font-family="Inter" font-size="12.5" font-weight="600" fill="#FFFFFF" text-anchor="end">prio 10</text>
+<text x="1594" y="470" font-family="Inter" font-size="13.5" font-weight="700" fill="#1B1F22" text-anchor="start">reads shm read-only</text>
+<text x="1594" y="491" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">MsgRegisterEvent → fusion</text>
+<text x="1594" y="512" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">woken by MsgDeliverEvent</text>
+<text x="1594" y="533" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">  on decision change / 100 ms</text>
+<text x="1594" y="554" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">all sensors · fused state</text>
+<text x="1594" y="575" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">deadline PASS · decision</text>
+<rect x="1580" y="645" width="300" height="200" rx="12" fill="#FFFFFF" stroke="#D6D0C7" stroke-width="1.5"/>
+<rect x="1580" y="645" width="300" height="36" rx="12" fill="#4A4F55"/>
+<rect x="1580" y="669" width="300" height="12" rx="0" fill="#4A4F55"/>
+<text x="1594" y="669" font-family="Inter" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="start">Logs &amp; evidence</text>
+<text x="1594" y="705" font-family="Inter" font-size="13.5" font-weight="700" fill="#1B1F22" text-anchor="start">fusion_log.csv (per cycle)</text>
+<text x="1594" y="726" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">imu_log.csv (per sample)</text>
+<text x="1594" y="747" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">System Profiler .kev trace</text>
+<text x="1594" y="768" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start">Pi HDMI display (xfce)</text>
+<text x="1594" y="789" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start"></text>
+<text x="1594" y="810" font-family="Inter" font-size="13.5" font-weight="400" fill="#5E5D5A" text-anchor="start"></text>
+<line x1="1532" y1="262" x2="1576" y2="262" stroke="#2E8B57" stroke-width="2.8" marker-end="url(#aGr)"/>
+<text x="1555.0" y="252" font-family="Inter" font-size="11.5" font-weight="700" fill="#2E8B57" text-anchor="middle">publish</text>
+<line x1="1730" y1="352" x2="1730" y2="406" stroke="#2E8B57" stroke-width="2.8" marker-end="url(#aGr)"/>
+<text x="1742" y="384" font-family="Inter" font-size="11.5" font-weight="700" fill="#2E8B57" text-anchor="start">read</text>
+<line x1="1532" y1="470" x2="1576" y2="470" stroke="#E8382F" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#aR)"/>
+<text x="1555.0" y="460" font-family="Inter" font-size="11.5" font-weight="700" fill="#E8382F" text-anchor="middle">pulse</text>
+<line x1="1532" y1="740" x2="1576" y2="740" stroke="#9A958E" stroke-width="2" marker-end="url(#aL)"/>
+<text x="1555.0" y="730" font-family="Inter" font-size="11.5" font-weight="700" fill="#5E5D5A" text-anchor="middle">CSV</text>
+<rect x="40" y="870" width="1840" height="64" rx="14" fill="#1B1F22"/>
+<text x="64" y="898" font-family="Inter" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="start">QNX Neutrino microkernel (procnto-smp-instr) · 4 × Cortex-A72</text>
+<text x="64" y="920" font-family="Inter" font-size="13.5" font-weight="400" fill="#CFCAC2" text-anchor="start">message passing · pulses · timers · interrupts · SCHED_FIFO scheduling · priority inheritance · memory protection between processes · instrumented for kernel event tracing</text>
+<line x1="1150" y1="868" x2="1150" y2="849" stroke="#7B4FA0" stroke-width="2.2" stroke-dasharray="5 4" marker-end="url(#aP)"/>
+<text x="1164" y="860" font-family="Inter" font-size="12" font-weight="700" fill="#7B4FA0" text-anchor="start">DISCONNECT pulse when a sensor process dies</text>
+<rect x="40" y="960" width="900" height="190" rx="14" fill="#F7F5F2" stroke="#E5E0D8" stroke-width="1.5"/>
+<text x="60" y="992" font-family="Inter" font-size="16" font-weight="700" fill="#1B1F22" text-anchor="start">Legend</text>
+<line x1="60" y1="1022" x2="110" y2="1022" stroke="#1B1F22" stroke-width="2.4" marker-end="url(#aD)"/>
+<text x="122" y="1027" font-family="Inter" font-size="13.5" font-weight="400" fill="#1B1F22" text-anchor="start">IOV message (MsgSendv / MsgReceivev)</text>
+<line x1="490" y1="1022" x2="540" y2="1022" stroke="#E8382F" stroke-width="2.4" stroke-dasharray="5 4" marker-end="url(#aR)"/>
+<text x="552" y="1027" font-family="Inter" font-size="13.5" font-weight="400" fill="#1B1F22" text-anchor="start">pulse (MsgSendPulse / MsgDeliverEvent)</text>
+<line x1="60" y1="1052" x2="110" y2="1052" stroke="#D98E04" stroke-width="2.4" stroke-dasharray="6 4" marker-end="url(#aA)"/>
+<text x="122" y="1057" font-family="Inter" font-size="13.5" font-weight="400" fill="#1B1F22" text-anchor="start">hardware interrupt → pulse (InterruptAttachEvent)</text>
+<line x1="490" y1="1052" x2="540" y2="1052" stroke="#7B4FA0" stroke-width="2.4" stroke-dasharray="5 4" marker-end="url(#aP)"/>
+<text x="552" y="1057" font-family="Inter" font-size="13.5" font-weight="400" fill="#1B1F22" text-anchor="start">kernel disconnect pulse (fault detection)</text>
+<line x1="60" y1="1082" x2="110" y2="1082" stroke="#2E8B57" stroke-width="2.4" marker-end="url(#aGr)"/>
+<text x="122" y="1087" font-family="Inter" font-size="13.5" font-weight="400" fill="#1B1F22" text-anchor="start">shared memory (seqlock)</text>
+<line x1="490" y1="1082" x2="540" y2="1082" stroke="#2563A6" stroke-width="2.4" marker-end="url(#aB)"/>
+<text x="552" y="1087" font-family="Inter" font-size="13.5" font-weight="400" fill="#1B1F22" text-anchor="start">driver / service access</text>
+<line x1="60" y1="1112" x2="110" y2="1112" stroke="#9A958E" stroke-width="2.4" marker-end="url(#aL)"/>
+<text x="122" y="1117" font-family="Inter" font-size="13.5" font-weight="400" fill="#1B1F22" text-anchor="start">physical bus / data file</text>
+<rect x="960" y="960" width="920" height="190" rx="14" fill="#F7F5F2" stroke="#E5E0D8" stroke-width="1.5"/>
+<text x="980" y="992" font-family="Inter" font-size="16" font-weight="700" fill="#1B1F22" text-anchor="start">Measured on the Pi</text>
+<text x="980.0" y="1038" font-family="Inter" font-size="24" font-weight="700" fill="#E8382F" text-anchor="start">0</text>
+<text x="980.0" y="1060" font-family="Inter" font-size="12.5" font-weight="600" fill="#5E5D5A" text-anchor="start">deadline misses</text>
+<text x="1200.0" y="1038" font-family="Inter" font-size="24" font-weight="700" fill="#E8382F" text-anchor="start">501 µs</text>
+<text x="1200.0" y="1060" font-family="Inter" font-size="12.5" font-weight="600" fill="#5E5D5A" text-anchor="start">worst response (traced)</text>
+<text x="1420.0" y="1038" font-family="Inter" font-size="24" font-weight="700" fill="#E8382F" text-anchor="start">7–20 µs</text>
+<text x="1420.0" y="1060" font-family="Inter" font-size="12.5" font-weight="600" fill="#5E5D5A" text-anchor="start">IPC latency</text>
+<text x="1640.0" y="1038" font-family="Inter" font-size="24" font-weight="700" fill="#E8382F" text-anchor="start">33–75 µs</text>
+<text x="1640.0" y="1060" font-family="Inter" font-size="12.5" font-weight="600" fill="#5E5D5A" text-anchor="start">CPU per ping (IRQ)</text>
+<text x="980.0" y="1100" font-family="Inter" font-size="24" font-weight="700" fill="#E8382F" text-anchor="start">200.25 Hz</text>
+<text x="980.0" y="1122" font-family="Inter" font-size="12.5" font-weight="600" fill="#5E5D5A" text-anchor="start">IMU, 0 samples lost</text>
+<text x="1200.0" y="1100" font-family="Inter" font-size="24" font-weight="700" fill="#E8382F" text-anchor="start">+0.12 %</text>
+<text x="1200.0" y="1122" font-family="Inter" font-size="12.5" font-weight="600" fill="#5E5D5A" text-anchor="start">IMU clock drift</text>
+<text x="1420.0" y="1100" font-family="Inter" font-size="24" font-weight="700" fill="#E8382F" text-anchor="start">30 fps</text>
+<text x="1420.0" y="1122" font-family="Inter" font-size="12.5" font-weight="600" fill="#5E5D5A" text-anchor="start">camera, ~2 ms/frame</text>
+<text x="1640.0" y="1100" font-family="Inter" font-size="24" font-weight="700" fill="#E8382F" text-anchor="start">79 %</text>
+<text x="1640.0" y="1122" font-family="Inter" font-size="12.5" font-weight="600" fill="#5E5D5A" text-anchor="start">CPU idle, 4 cores</text>
+</svg>

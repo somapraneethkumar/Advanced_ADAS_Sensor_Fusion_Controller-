@@ -4,7 +4,7 @@ Deterministic collision-risk decisions on a Raspberry Pi 4 running QNX 8.0.
 Three real sensors (IMU, ultrasonic, USB camera) run as separate QNX processes and feed
 a fusion server that decides **SAFE / WARNING / CRITICAL / EMERGENCY** every 20 ms.
 
-QNX India Hackathon (QNX Everywhere) · Team: **FusionDrive** · Team ID: **QNXHACK-HYD-026**
+QNX India Hackathon (QNX Everywhere) · Team: **FusionDrive** · Team ID: **QNXHACK-HYD-026**.
 TEAM MEMBERS:**Sakilam Adithya,Dubbaka Manoj Goud ,Soma Praneeeth Kumar**
 
 ---
